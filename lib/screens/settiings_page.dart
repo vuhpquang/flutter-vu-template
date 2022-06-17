@@ -6,14 +6,43 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: GestureDetector(
-            child: Image.asset('lib/assets/images/mastercard.png'),
-            onTap: () {
-              print("Hello");
-            },
-          )),
-    );
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  GestureDetector(
+                    child: Image.asset('lib/assets/images/mastercard.png'),
+                    onTap: () {
+                      print("Hello");
+                    },
+                  ),
+                  GestureDetector(
+                    child: Image.asset('lib/assets/images/mastercard.png'),
+                    onTap: () {
+                      print("Hello");
+                    },
+                  ),
+                  GestureDetector(
+                    child: Image.asset('lib/assets/images/mastercard.png'),
+                    onTap: () {
+                      print("Hello");
+                    },
+                  ),
+                  GestureDetector(
+                    child: Image.asset('lib/assets/images/mastercard.png'),
+                    onTap: () {
+                      print("Hello");
+                    },
+                  ),
+                  GestureDetector(
+                    child: Image.asset('lib/assets/images/mastercard.png'),
+                    onTap: () {
+                      print("Hello");
+                    },
+                  ),
+                ],
+              ),
+            )));
   }
 }
