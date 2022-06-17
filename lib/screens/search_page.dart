@@ -12,8 +12,8 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      // color: Colors.accents[0],
+    return Container(
+      color: Colors.accents[0],
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -29,15 +29,17 @@ class _SearchPageState extends State<SearchPage> {
                 //   context,
                 //   MaterialPageRoute(builder: (context) => const SecondPage()),
                 // );
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (contexty) => const SecondPage(),
-                  ),
-                );
+
+                // Navigator.of(context).push(
+                //   MaterialPageRoute(
+                //     builder: (contexty) => const SecondPage(),
+                //   ),
+                // );
+
+                Navigator.pushNamed(context, '/second');
               },
               child: const Text('Navigate to Screen 2'),
             ),
-            ListViewWidget(),
           ],
         ),
       ),

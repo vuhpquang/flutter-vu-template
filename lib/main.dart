@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/screens/home_page.dart';
+import 'package:flutter_boilerplate/screens/search_page.dart';
+import 'package:flutter_boilerplate/screens/second_page.dart';
+import 'package:flutter_boilerplate/screens/settiings_page.dart';
 import 'package:flutter_boilerplate/widgets/test.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -28,8 +31,17 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.purple,
+        accentColor: Colors.green,
+        brightness: Brightness.light,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      routes: <String, WidgetBuilder>{
+        '/home': (BuildContext context) =>
+            const MyHomePage(title: 'Flutter Demo Home Page'),
+        '/settings': (BuildContext context) => const SettingsPage(),
+        '/search': (BuildContext context) => const SearchPage(),
+        '/second': (BuildContext context) => const SecondPage(),
+      },
       // home: TestWidget(),
     );
   }

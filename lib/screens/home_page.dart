@@ -47,13 +47,34 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         title: Text(widget.title),
         // backgroundColor: Colors.indigo[200],
         actions: [IconButton(onPressed: () {}, icon: Icon(Icons.ac_unit))],
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          icon: Icon(Icons.arrow_back),
-        ),
+        // leading: IconButton(
+        //   onPressed: () {
+        //     Navigator.of(context).pop();
+        //   },
+        //   icon: Icon(Icons.arrow_back),
+        // ),
       ),
+      drawer: Drawer(
+          child: ListView(
+        children: [
+          DrawerHeader(
+            child: Text('Drawer Header'),
+            decoration: BoxDecoration(
+              color: Colors.blue,
+            ),
+          ),
+          ListTile(
+            title: Text('Item 1'),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const SearchPage(),
+                ),
+              );
+            },
+          ),
+        ],
+      )),
       body: IndexedStack(
         index: currentTabIndex,
         children: <Widget>[
@@ -78,7 +99,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               ],
             ),
           ),
-          ListViewWidget(),
+          // ListViewWidget(),
+          SearchPage(),
           SettingsPage(),
         ],
       ),
