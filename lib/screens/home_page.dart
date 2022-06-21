@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/screens/menu_page.dart';
 import 'package:flutter_boilerplate/screens/search_page.dart';
-import 'package:flutter_boilerplate/screens/settiings_page.dart';
+import 'package:flutter_boilerplate/screens/settings_page.dart';
 import 'package:flutter_boilerplate/widgets/child_widget.dart';
-import 'package:flutter_boilerplate/widgets/list_view.dart';
+import 'dart:io';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -44,9 +45,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(Platform.operatingSystem),
         // backgroundColor: Colors.indigo[200],
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.ac_unit))],
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.ac_unit)),
+        ],
         // leading: IconButton(
         //   onPressed: () {
         //     Navigator.of(context).pop();
@@ -100,6 +103,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             ),
           ),
           // ListViewWidget(),
+          MenuPage(),
           SearchPage(),
           SettingsPage(),
         ],
@@ -144,7 +148,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         selectedIndex: currentTabIndex,
         backgroundColor: Colors.teal[100],
         animationDuration: const Duration(seconds: 1),
-        labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
+        // labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
         onDestinationSelected: (int index) {
           setState(() {
             currentTabIndex = index;
@@ -174,6 +178,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             icon: AnimatedIcon(
                 icon: AnimatedIcons.menu_close, progress: _animationController),
             label: 'Home',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.menu_book),
+            label: 'Menu',
           ),
           NavigationDestination(
             icon: Icon(Icons.search),
