@@ -1,16 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/provider/counter_provider.dart';
 import 'package:flutter_boilerplate/screens/color_page.dart';
 import 'package:flutter_boilerplate/screens/hero_page.dart';
 import 'package:flutter_boilerplate/screens/home_page.dart';
 import 'package:flutter_boilerplate/screens/search_page.dart';
 import 'package:flutter_boilerplate/screens/second_page.dart';
 import 'package:flutter_boilerplate/screens/settings_page.dart';
-import 'package:flutter_boilerplate/widgets/test.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  // runApp(const MyApp());
+
+  // runApp(ChangeNotifierProvider(
+  //   create: (_context) => CounterProvider(),
+  //   child: MyApp(),
+  // ));
+
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<CounterProvider>(create: (_) => CounterProvider()),
+    ],
+    child: MyApp(),
+  ));
 }
 
 class Example {
