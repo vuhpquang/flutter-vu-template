@@ -18,4 +18,12 @@ class LanguageProvider with ChangeNotifier {
     }
     notifyListeners();
   }
+
+  bool isEnglish() {
+    if (_locale == const Locale('en', 'US')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

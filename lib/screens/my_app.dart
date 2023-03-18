@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Material App Bar'),
+        title: const Text('Home Screen'),
         actions: const [ThemeToggleButton(), LanguageChoose()],
       ),
       body: Center(

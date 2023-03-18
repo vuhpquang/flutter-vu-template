@@ -16,8 +16,8 @@ class _LanguageChooseState extends State<LanguageChoose> {
 
   @override
   Widget build(BuildContext context) {
-    bool darkModeEnabled = Theme.of(context).brightness == Brightness.dark;
-    darkModeEnabled ? isOn = 1 : isOn = 0;
+    bool englishEnabled = Provider.of<LanguageProvider>(context).isEnglish();
+    englishEnabled ? isOn = 1 : isOn = 0;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 360),
       width: s.width / 2,
