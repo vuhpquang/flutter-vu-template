@@ -1,4 +1,5 @@
 import 'package:f_super/constants/app_themes.dart';
+import 'package:f_super/provider/app_provider.dart';
 import 'package:f_super/provider/category_provider.dart';
 import 'package:f_super/provider/language_provider.dart';
 import 'package:f_super/provider/theme_provider.dart';
@@ -23,10 +24,14 @@ class ProviderContainer extends StatelessWidget {
         ChangeNotifierProvider(
           create: (ctx) => LanguageProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (ctx) => AppProvider(),
+        ),
       ],
       // child: MyApp(),
-      child: Consumer2<ThemeProvider, LanguageProvider>(
-        builder: (ctx, themeProvider, languageProvider, _) => MaterialApp(
+      child: Consumer3<ThemeProvider, LanguageProvider, AppProvider>(
+        builder: (ctx, themeProvider, languageProvider, appProvider, _) =>
+            MaterialApp(
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           themeMode: themeProvider.themeMode,
@@ -42,7 +47,7 @@ class ProviderContainer extends StatelessWidget {
           // supportedLocales: const [Locale('en', 'US'), Locale('vi', 'VN')],
           supportedLocales: AppLocalizations.supportedLocales,
           locale: languageProvider.locale,
-          home: MyApp(),
+          home: const MyApp(),
         ),
       ),
     );

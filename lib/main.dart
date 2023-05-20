@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:f_super/provider/multiple_provider.dart';
-import 'package:f_super/screens/my_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

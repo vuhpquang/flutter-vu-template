@@ -18,9 +18,7 @@ class MyApp extends StatelessWidget {
         actions: const [ThemeToggleButton(), LanguageChoose()],
       ),
       body: Center(
-        child: Container(
-            // child: const Text(AppLocalizations.of(context).translate('helloWorld')
-            child: Text(AppLocalizations.of(context)!.hello('Vũ'))),
+        child: Text(AppLocalizations.of(context)!.hello('Vũ')),
       ),
     );
   }
