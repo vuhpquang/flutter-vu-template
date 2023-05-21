@@ -2,11 +2,19 @@ import 'package:f_super/models/task_model.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
+import '../utils/shared_prefererences.dart';
+
 class AppProvider extends ChangeNotifier {
   List<Task> tasks = <Task>[];
 
   void loadTasks(List<Task> tasks) {
     this.tasks = tasks;
+    notifyListeners();
+  }
+
+  void deleteTask(String id) {
+    tasks.removeWhere((Task task) => task.id == id);
+    SharedPreferencesUtils.saveTasks(tasks);
     notifyListeners();
   }
 
@@ -33,6 +41,17 @@ class AppProvider extends ChangeNotifier {
       }
       return task;
     }).toList();
+    notifyListeners();
+  }
+
+  void editTask(String id, String title) {
+    tasks = tasks.map((Task task) {
+      if (task.id == id) {
+        task.title = title;
+      }
+      return task;
+    }).toList();
+    SharedPreferencesUtils.saveTasks(tasks);
     notifyListeners();
   }
 

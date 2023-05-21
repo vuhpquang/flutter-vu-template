@@ -33,7 +33,6 @@ class _TaskListScreenState extends State<TaskListScreen> {
     notifier = Provider.of<AppProvider>(context, listen: false);
     notifier.addListener(() {
       mounted ? setState(() {}) : null;
-      print('notifier: ${notifier.tasks}');
       SharedPreferencesUtils.saveTasks(notifier.tasks);
     });
   }
@@ -50,7 +49,6 @@ class _TaskListScreenState extends State<TaskListScreen> {
     List<Task> taskList = notifier.tasks;
 
     onTap(String id) {
-      print('id: $id');
       HapticFeedback.mediumImpact();
       notifier.toggleTask(id);
       // Provider.of<AppProvider>(context, listen: false).toggleTask(id);
