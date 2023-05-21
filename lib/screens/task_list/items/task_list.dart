@@ -1,6 +1,9 @@
 import 'package:f_super/models/task_model.dart';
 import 'package:f_super/screens/task_list/items/task_list_item.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../../provider/app_provider.dart';
 
 class TaskList extends StatelessWidget {
   final List<Task> taskList;
@@ -14,15 +17,25 @@ class TaskList extends StatelessWidget {
     return Container(
       color: Theme.of(context).colorScheme.onBackground,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ListView.separated(
-          itemCount: taskList.length,
-          itemBuilder: (BuildContext context, int index) {
-            return TaskListItem(data: taskList[index], onTap: onTap);
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: ReorderableListView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          physics: const BouncingScrollPhysics(),
+          proxyDecorator: (child, index, animation) => Material(
+            borderRadius: BorderRadius.circular(16.0),
+            child: child,
+          ),
+          onReorder: (int oldIndex, int newIndex) {
+            Provider.of<AppProvider>(context, listen: false)
+                .reorderTask(oldIndex, newIndex);
           },
-          separatorBuilder: (BuildContext context, int index) {
-            return const SizedBox(height: 16.0);
-          },
+          children: taskList
+              .map((Task task) => TaskListItem(
+                    data: task,
+                    onTap: onTap,
+                    key: ValueKey<String>(task.id),
+                  ))
+              .toList(),
         ),
       ),
     );

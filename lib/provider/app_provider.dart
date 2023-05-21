@@ -3,15 +3,26 @@ import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
 class AppProvider extends ChangeNotifier {
-  List<Task> tasks = <Task>[
-    Task(id: '4', title: 'Task 1', isDone: false),
-    Task(id: '2', title: 'Task 2', isDone: true),
-    Task(id: '3', title: 'Task 3', isDone: false),
-  ];
+  List<Task> tasks = <Task>[];
+
+  void loadTasks(List<Task> tasks) {
+    this.tasks = tasks;
+    notifyListeners();
+  }
 
   void addTask(String title) {
     final Task task = Task(id: const Uuid().v4(), title: title);
-    tasks.add(task);
+    // Insert at the beginning of the list.
+    tasks.insert(0, task);
+    notifyListeners();
+  }
+
+  void reorderTask(int oldIndex, int newIndex) {
+    if (oldIndex < newIndex) {
+      newIndex -= 1;
+    }
+    final Task task = tasks.removeAt(oldIndex);
+    tasks.insert(newIndex, task);
     notifyListeners();
   }
 
