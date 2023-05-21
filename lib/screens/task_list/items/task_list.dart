@@ -29,6 +29,7 @@ class TaskList extends StatelessWidget {
             Provider.of<AppProvider>(context, listen: false)
                 .reorderTask(oldIndex, newIndex);
           },
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
           children: taskList
               .map((Task task) => TaskListItem(
                     data: task,
